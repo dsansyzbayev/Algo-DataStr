@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+
+//1. last
+//2. closest number to the one that need to be found
+//3. 
+int binary_search(int *a, int n, int k){
+    int left = 0;
+    int right = n-1;
+
+    while(left < right){
+        int m = (left+right)/2;
+        if( a[m] < k){
+            left = m + 1;
+        } else {
+            right = m;
+        }
+    }
+
+    if (a[right] == k || a[right] == k + 1 || a[right] == k - 1)
+        return right;
+    return -1;
+}
+
+int main(){
+    int n,k;
+    cin >> n>>k;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    cout << binary_search(a, n, k);
+
+    return 0;
+}
